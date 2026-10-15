@@ -428,6 +428,12 @@ Configuration examples for these models can be found in the provider-specific se
 | [`github-copilot-claude-sonnet-4.5`](#github-copilot-claude-sonnet)    | Claude Sonnet 4.5 |
 | [`github-copilot-claude-opus-4-5`](#github-copilot-claude-opus)        | Claude Opus 4.5   |
 
+### Vercel AI Gateway Models
+
+| Model Name      | Description |
+| --------------- | ----------- |
+| [`apex`](#apex) | Apex        |
+
 ## AWS Bedrock Provider Examples
 
 :::info AWS Bedrock Region Configuration
@@ -2153,6 +2159,32 @@ GitHub Copilot requires an OAuth access token mounted as a file. See [Authentica
     id: gh-copilot-claude-opus-4-5
     base_model: github_copilot/claude-opus-4.5
     label: "GitHub Copilot Claude Opus 4.5"
+```
+
+</details>
+
+## Vercel AI Gateway Provider Examples
+
+:::info Vercel AI Gateway API key
+Models routed through [Vercel AI Gateway](https://vercel.com/docs/ai-gateway) authenticate with an AI Gateway API key. Provide it to the LiteLLM proxy as the `VERCEL_AI_GATEWAY_API_KEY` environment variable and reference it with `os.environ/VERCEL_AI_GATEWAY_API_KEY`, as shown below.
+:::
+
+### Callstack
+
+#### Apex
+
+<details>
+<summary><strong>Apex</strong></summary>
+
+```yaml
+- model_name: apex
+  litellm_params:
+    model: vercel_ai_gateway/callstack/apex
+    api_key: os.environ/VERCEL_AI_GATEWAY_API_KEY
+  model_info:
+    id: apex-vercel-ai-gateway
+    base_model: vercel_ai_gateway/callstack/apex
+    label: "Apex"
 ```
 
 </details>
